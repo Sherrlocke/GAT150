@@ -35,7 +35,7 @@ namespace MarkOne {
 			SDL_Quit();
 		}
 
-		renderer = SDL_CreateRenderer(window, -1, 0);
+		renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_PRESENTVSYNC);
 	}
 
 	void Renderer::BeginFrame()
@@ -48,9 +48,22 @@ namespace MarkOne {
 		SDL_RenderPresent(renderer);
 	}
 
-	void Renderer::Draw(std::shared_ptr<MarkOne::Texture> texture, const Vector2& position)
+	void Renderer::Draw(std::shared_ptr<MarkOne::Texture> texture, const Vector2& position, float angle, const Vector2& scale)
 	{
-		SDL_Rect dest{ (int)position.x, (int)position.y, 64, 96};
-		SDL_RenderCopy(renderer, texture->texture, nullptr, &dest);
+		Vector2 size = texture->GetSize();
+		size = size * scale;
+
+		SDL_Rect dest{ (int)position.x, (int)position.y, static_cast<int>(size.x), static_cast<int>(size.y)};
+
+		SDL_RenderCopyEx(renderer, texture->texture, nullptr, &dest, angle, nullptr, SDL_FLIP_HORIZONTAL);
+	}
+
+	void Renderer::Draw(std::shared_ptr<MarkOne::Texture> texture, const Transform& transform) {
+		Vector2 size = texture->GetSize();
+		size = size * transform.scale;
+
+		SDL_Rect dest{ static_cast<int>(transform.position.x), static_cast<int>(transform.position.y), static_cast<int>(size.x), static_cast<int>(size.y) };
+
+		SDL_RenderCopyEx(renderer, texture->texture, nullptr, &dest, transform.rotation, nullptr, SDL_FLIP_HORIZONTAL);
 	}
 }

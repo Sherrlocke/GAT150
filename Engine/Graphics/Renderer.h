@@ -2,6 +2,7 @@
 #include "Framework/System.h"
 #include "Texture.h"
 #include "Math/Vector2.h"
+#include "Math/Transform.h"
 #include <SDL.h>
 #include <string>
 
@@ -17,7 +18,8 @@ namespace MarkOne {
 		void BeginFrame();
 		void EndFrame();
 
-		void Draw(std::shared_ptr<MarkOne::Texture> texture, const Vector2& position);
+		void Draw(std::shared_ptr<MarkOne::Texture> texture, const Vector2& position, float angle, const Vector2& scale = Vector2::one);
+		void Draw(std::shared_ptr<MarkOne::Texture> texture, const Transform& transform);
 
 		friend class Texture;
 

@@ -3,24 +3,41 @@
 #include <SDL_image.h>
 #include <iostream>
 
-bool MarkOne::Texture::Load(const std::string& name, void* data)
-{
-	renderer = static_cast<Renderer*>(data)->renderer;
+namespace MarkOne {
 
-	SDL_Surface* surface = IMG_Load(name.c_str());
+	bool Texture::Load(const std::string& name, void* data)
+	{
+		renderer = static_cast<Renderer*>(data)->renderer;
 
-	if (surface == nullptr) {
-		std::cout << "IMG_Load Error: " << SDL_GetError() << std::endl;
-		return false;
+		SDL_Surface* surface = IMG_Load(name.c_str());
+
+		if (surface == nullptr) {
+			std::cout << "IMG_Load Error: " << SDL_GetError() << std::endl;
+			return false;
+		}
+
+		texture = SDL_CreateTextureFromSurface(renderer, surface);
+		SDL_FreeSurface(surface);
+
+		if (texture == nullptr) {
+			std::cout << "SDL_CreateTextureFromSurface Error: " << SDL_GetError() << std::endl;
+			return false;
+
+
+			return true;
+
+		}
+
 	}
 
-	texture = SDL_CreateTextureFromSurface(renderer, surface);
-	SDL_FreeSurface(surface);
 
-	if (texture == nullptr) {
-		std::cout << "SDL_CreateTextureFromSurface Error: " << SDL_GetError() << std::endl;
-		return false;
+
+	Vector2 Texture::GetSize() const
+	{
+		SDL_Point point;
+		SDL_QueryTexture(texture, nullptr, nullptr, &point.x, &point.y);
+
+		return Vector2{ point.x, point.y };
 	}
 
-	return true;
 }
