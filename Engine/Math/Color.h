@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <SDL.h>
 
 namespace MarkOne {
 
@@ -40,5 +41,15 @@ namespace MarkOne {
 		static const Color orange;
 		static const Color yellow;
 		
+		operator SDL_Color() const
+		{
+			SDL_Color color;
+			color.r = static_cast<Uint8>(r * 255);
+			color.g = static_cast<Uint8>(g * 255);
+			color.b = static_cast<Uint8>(b * 255);
+			color.a = 255;
+
+			return color;
+		}
 	};
 }

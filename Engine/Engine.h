@@ -2,8 +2,10 @@
 
 //systems
 #include "Audio/AudioSystem.h"
+#include "Input/InputSystem.h"
 
 //core
+#include "Core/Utilities.h"
 #include "Core/FileSystem.h"
 #include "Core/Timer.h"
 
@@ -17,6 +19,8 @@
 //graphics
 #include "Graphics/Renderer.h"
 #include "Graphics/Texture.h"
+#include "Graphics/Font.h"
+#include "Graphics/ParticleSystem.h"
 
 //framework
 #include "Framework/EventSystem.h"
@@ -41,7 +45,7 @@ namespace MarkOne {
 		void Shutdown();
 
 		void Update();
-		void Draw();
+		void Draw(Renderer* renderer);
 
 		template<typename T>
 		T* Get();
