@@ -32,6 +32,10 @@
 #include "Object/Actor.h"
 #include "Object/Scene.h"
 
+//Components
+#include "Component/SpriteComponent.h"
+#include "Component/PhysicsComponent.h"
+
 #include <vector>
 #include <memory>
 #include <algorithm>
