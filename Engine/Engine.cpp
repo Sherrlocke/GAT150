@@ -1,6 +1,6 @@
 #include "Engine.h"
 
-namespace MarkOne {
+namespace nc {
 
 	void Engine::Startup()
 	{

@@ -2,7 +2,7 @@
 #include <cmath>
 #include <iostream>
 
-namespace MarkOne {
+namespace nc {
 
 	struct Vector2 {
 		float x, y;

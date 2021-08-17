@@ -1,6 +1,6 @@
 #include "EventSystem.h"
 
-namespace MarkOne {
+namespace nc {
 
 	void EventSystem::Startup()
 	{

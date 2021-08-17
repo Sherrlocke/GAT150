@@ -1,7 +1,7 @@
 #pragma once
 #include <fmod.hpp>
 
-namespace MarkOne {
+namespace nc {
 
 	class AudioChannel {
 	public:

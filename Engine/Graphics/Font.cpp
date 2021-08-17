@@ -1,6 +1,6 @@
 #include "Font.h"
 
-namespace MarkOne {
+namespace nc {
 
 	Font::~Font()
 	{
@@ -22,7 +22,7 @@ namespace MarkOne {
 		return true;
 	}
 
-	SDL_Surface* Font::CreateSurface(const std::string& text, const MarkOne::Color& color)
+	SDL_Surface* Font::CreateSurface(const std::string& text, const nc::Color& color)
 	{
 		SDL_Surface* surface = TTF_RenderText_Solid(font, text.c_str(), color);
 			if (surface == nullptr)

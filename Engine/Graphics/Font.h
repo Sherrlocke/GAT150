@@ -4,7 +4,7 @@
 #include "Math/Color.h"
 #include <SDL_ttf.h>
 
-namespace MarkOne
+namespace nc
 {
 	class Font : public Resource
 	{
@@ -12,7 +12,7 @@ namespace MarkOne
 		~Font();
 
 		bool Load(const std::string& name, void* data) override;
-		SDL_Surface* CreateSurface(const std::string& text, const MarkOne::Color& color);
+		SDL_Surface* CreateSurface(const std::string& text, const nc::Color& color);
 
 	private:
 		TTF_Font* font{ nullptr };

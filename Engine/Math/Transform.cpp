@@ -1,6 +1,6 @@
 #include "Transform.h"
 
-namespace MarkOne {
+namespace nc {
 	void Transform::Update() {
 
 		Matrix33 mxs;

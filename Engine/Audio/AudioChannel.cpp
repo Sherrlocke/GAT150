@@ -1,6 +1,6 @@
 #include "AudioChannel.h"
 
-namespace MarkOne {
+namespace nc {
 
 	bool AudioChannel::isPlaying() {
 

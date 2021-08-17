@@ -1,7 +1,7 @@
 #pragma once
 #include <Chrono>
 
-namespace MarkOne {
+namespace nc {
 	class Timer {
 
 	public:

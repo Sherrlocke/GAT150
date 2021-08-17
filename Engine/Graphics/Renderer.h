@@ -6,7 +6,7 @@
 #include <SDL.h>
 #include <string>
 
-namespace MarkOne {
+namespace nc {
 
 	class Renderer : public System {
 	public:
@@ -18,8 +18,8 @@ namespace MarkOne {
 		void BeginFrame();
 		void EndFrame();
 
-		void Draw(std::shared_ptr<MarkOne::Texture> texture, const Vector2& position, float angle, const Vector2& scale = Vector2::one);
-		void Draw(std::shared_ptr<MarkOne::Texture> texture, const Transform& transform);
+		void Draw(std::shared_ptr<nc::Texture> texture, const Vector2& position, float angle, const Vector2& scale = Vector2::one);
+		void Draw(std::shared_ptr<nc::Texture> texture, const Transform& transform);
 
 		friend class Texture;
 

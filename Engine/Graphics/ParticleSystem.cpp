@@ -3,7 +3,7 @@
 #include "Renderer.h"
 #include "Math/Random.h"
 
-namespace MarkOne {
+namespace nc {
 
 	void ParticleSystem::Startup()
 	{
@@ -34,7 +34,7 @@ namespace MarkOne {
 	{
 		for (const Particle& particle : particles) {
 			if (particle.isActive) {
-				
+				renderer->Draw(particle.texture, particle.position);
 			}
 		}
 	}
@@ -54,7 +54,7 @@ namespace MarkOne {
 			}
 		}
 	}
-	void ParticleSystem::Create(const Vector2& position, size_t count, float lifetime, const std::vector<Color>& colors, float speed, float angle, float angleRange)
+	void ParticleSystem::Create(const Vector2& position, size_t count, float lifetime, std::shared_ptr<Texture> texture, float speed, float angle, float angleRange)
 	{
 		for (size_t i = 0; i < count; i++) {
 			auto particle = std::find_if(particles.begin(), particles.end(), Particle::IsNotActive);
@@ -63,9 +63,10 @@ namespace MarkOne {
 				particle->lifetime = lifetime;
 				particle->position = position;
 				particle->prevPosition = position;
+				particle->texture = texture;
 				//particle->color = colors[rand() % colors.size()];
 
-				particle->velocity = MarkOne::Vector2::Rotate(MarkOne::Vector2::right, angle + MarkOne::RandomRange(-angleRange, angleRange)) * (speed * Random());
+				particle->velocity = nc::Vector2::Rotate(nc::Vector2::right, angle + nc::RandomRange(-angleRange, angleRange)) * (speed * Random());
 			}
 		}
 	}

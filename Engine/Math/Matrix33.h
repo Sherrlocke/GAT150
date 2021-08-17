@@ -1,7 +1,7 @@
 #pragma once
 #include "Vector2.h"
 
-namespace MarkOne {
+namespace nc {
 	struct Matrix33 {
 		float m[3][3]; // [column][Row]
 

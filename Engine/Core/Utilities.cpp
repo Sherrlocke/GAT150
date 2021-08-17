@@ -1,7 +1,7 @@
 #include "Utilities.h"
 #include <algorithm>
 
-namespace MarkOne {
+namespace nc {
 
 	std::string string_tolower(const std::string& str) {
 		std::string lower = str;

@@ -1,7 +1,7 @@
 #include "AudioSystem.h"
 #include "Core/Utilities.h"
 
-namespace MarkOne
+namespace nc
 {
 	void AudioSystem::Startup()
 	{

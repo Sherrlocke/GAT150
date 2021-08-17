@@ -6,14 +6,14 @@
 #include <memory>
 #include <algorithm>
 
-namespace MarkOne {
+namespace nc {
 
 	class ResourceSystem : public System {
 	public:
 		void Startup() override {}
 		void Shutdown() override {}
 		void Update(float dt) override {}
-		void Add(const std::string& name, std::shared_ptr<MarkOne::Resource> resource);
+		void Add(const std::string& name, std::shared_ptr<nc::Resource> resource);
 
 		template <typename T>
 		std::shared_ptr<T> Get(const std::string& name, void* data = nullptr);
@@ -37,7 +37,7 @@ namespace MarkOne {
 		}
 	}
 
-	inline void ResourceSystem::Add(const std::string& name, std::shared_ptr<MarkOne::Resource> resource)
+	inline void ResourceSystem::Add(const std::string& name, std::shared_ptr<nc::Resource> resource)
 	{
 		resources[string_tolower(name)] = resource;
 	}

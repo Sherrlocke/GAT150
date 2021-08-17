@@ -5,7 +5,7 @@
 #include <SDL.h>
 #include <array>
 
-namespace MarkOne {
+namespace nc {
 	class InputSystem : public System {
 	
 	public:

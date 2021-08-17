@@ -2,7 +2,7 @@
 #include "Matrix33.h"
 
 
-namespace MarkOne {
+namespace nc {
 	struct Transform {
 		Vector2 position;
 		float rotation{ 0 };

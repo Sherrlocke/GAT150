@@ -1,7 +1,7 @@
 #include "Color.h"
 #include <string>
 
-namespace MarkOne {
+namespace nc {
 	const Color Color::white{ 1, 1, 1 };
 	const Color Color::red{ 1, 0, 0 };
 	const Color Color::green{ 0, 1, 0 };

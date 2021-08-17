@@ -6,7 +6,7 @@
 #include <list>
 #include <variant>
 
-namespace MarkOne {
+namespace nc {
 
 	struct Event {
 		std::string name;

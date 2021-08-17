@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-namespace MarkOne {
+namespace nc {
 	class Resource {
 
 	public:

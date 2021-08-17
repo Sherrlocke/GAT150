@@ -1,6 +1,6 @@
 #pragma once
 
-namespace MarkOne {
+namespace nc {
 
 	void SeedRandom(unsigned int seed);
 

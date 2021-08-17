@@ -4,7 +4,7 @@
 #include <memory>
 #include <vector>
 
-namespace MarkOne {
+namespace nc {
 	class Actor;
 	class Engine;
 	class Renderer;

@@ -4,7 +4,7 @@
 #include <vector>
 #include <memory>
 
-namespace MarkOne {
+namespace nc {
 	class Scene;
 	class Texture;
 	class Renderer;

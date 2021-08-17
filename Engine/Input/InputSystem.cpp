@@ -1,6 +1,6 @@
 #include "InputSystem.h"
 
-namespace MarkOne {
+namespace nc {
 
 	void InputSystem::Startup()
 	{
@@ -25,7 +25,7 @@ namespace MarkOne {
 		prevMouseButtonState = mouseButtonState;
 		int x, y;
 		Uint32 buttons = SDL_GetMouseState(&x, &y);
-		mousePosition = MarkOne::Vector2{ x, y };
+		mousePosition = nc::Vector2{ x, y };
 		mouseButtonState[0] = buttons & SDL_BUTTON_LMASK;
 		mouseButtonState[1] = buttons & SDL_BUTTON_MMASK;
 		mouseButtonState[2] = buttons & SDL_BUTTON_RMASK;

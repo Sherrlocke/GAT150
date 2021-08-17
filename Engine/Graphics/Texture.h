@@ -3,7 +3,7 @@
 #include "Math/Vector2.h"
 #include <SDL.h>
 
-namespace MarkOne {
+namespace nc {
 
 	class Renderer;
 

@@ -1,6 +1,6 @@
 #include "Timer.h"
 
-namespace MarkOne {
+namespace nc {
 
 	Timer::clock_tick_type Timer::ElapsedTicks()
 	{

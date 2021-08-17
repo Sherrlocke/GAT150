@@ -4,7 +4,7 @@
 #include <iostream>
 #include <cassert>
 
-namespace MarkOne {
+namespace nc {
 	
 	Texture::Texture(Renderer* renderer)
 	{
@@ -27,6 +27,8 @@ namespace MarkOne {
 
 	bool Texture::Load(const std::string& name, void* data)
 	{
+		assert(data);
+
 		renderer = static_cast<Renderer*>(data)->renderer;
 
 		SDL_Surface* surface = IMG_Load(name.c_str());
@@ -49,8 +51,6 @@ namespace MarkOne {
 		}
 
 	}
-
-
 
 	Vector2 Texture::GetSize() const
 	{

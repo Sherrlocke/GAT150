@@ -2,7 +2,7 @@
 #include <iostream>
 #include <SDL.h>
 
-namespace MarkOne {
+namespace nc {
 
 	struct Color {
 		float r, g, b;

@@ -1,6 +1,6 @@
 #pragma once
 
-namespace MarkOne {
+namespace nc {
 	const float Pi = 3.141592653589793238462643f;
 	const float TwoPi = 6.28318531f;
 	const float HalfPi = 1.57079633f;

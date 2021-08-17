@@ -36,7 +36,7 @@
 #include <memory>
 #include <algorithm>
 
-namespace MarkOne {
+namespace nc {
 
 	class Engine {
 

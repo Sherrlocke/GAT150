@@ -2,7 +2,7 @@
 #include <random>
 #include <limits>
 
-namespace MarkOne {
+namespace nc {
 
 	std::default_random_engine g_engine;
 

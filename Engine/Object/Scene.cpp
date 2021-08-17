@@ -2,7 +2,7 @@
 #include "Actor.h"
 #include <algorithm>
 
-namespace MarkOne {
+namespace nc {
 	void Scene::Update(float dt)
 	{
 		// Add new actors
@@ -17,12 +17,12 @@ namespace MarkOne {
 
 			for (size_t j = i + 1; j < actors.size(); j++) {
 
-				if (actors[i]->destroy || actors[j]->destroy) continue;
+				if (actors[i]->destroy + actors[j]->destroy) continue;
 
-				MarkOne::Vector2 dir = actors[i]->transform.position - actors[j]->transform.position;
+				nc::Vector2 dir = actors[i]->transform.position - actors[j]->transform.position;
 				float distance = dir.Length();
 
-				if (distance < actors[i]->GetRadius() + actors[j]->GetRadius()) {
+				if (distance < actors[i]->GetRadius() || distance < actors[j]->GetRadius()) {
 					actors[i]->OnCollision(actors[j].get());
 					actors[j]->OnCollision(actors[i].get());
 				}

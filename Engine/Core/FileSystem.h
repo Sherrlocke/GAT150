@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-namespace MarkOne {
+namespace nc {
 	void setFilePath(const std::string& pathName);
 	std::string getFilePath();
 }

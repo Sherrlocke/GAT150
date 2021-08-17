@@ -6,7 +6,7 @@
 #include <map>
 
 
-namespace MarkOne
+namespace nc
 {
 	class AudioSystem : public System
 	{
