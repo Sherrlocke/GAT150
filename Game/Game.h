@@ -24,15 +24,6 @@ public:
 
 	bool isQuit() { return quit; }
 
-private:
-	void UpdateTitle(float dt);
-	void UpdateStartLevel(float dt);
-	void NextLevel(float dt);
-
-	void OnAddPoints(const nc::Event& event);
-	void OnPlayerHit(const nc::Event& event);
-	void OnSentrySpawn(const nc::Event& event);
-
 public:
 	std::unique_ptr<nc::Engine> engine;
 	std::unique_ptr<nc::Scene> scene;

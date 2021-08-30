@@ -1,4 +1,8 @@
 #include "Game.h"
+#include "GameComponent/PlayerComponent.h"
+#include "GameComponent/EnemyComponent.h"
+
+
 
 void Game::Initialize()
 {
@@ -7,6 +11,9 @@ void Game::Initialize()
 	engine->Startup();
 	engine->Get<nc::Renderer>()->Create("GAT150", 800, 600);
 
+	REGISTER_CLASS(PlayerComponent);
+	REGISTER_CLASS(EnemyComponent);
+
 	// create scene
 	scene = std::make_unique<nc::Scene>(); //New Scene
 	scene->engine = engine.get();
@@ -14,18 +21,24 @@ void Game::Initialize()
 	nc::SeedRandom(static_cast<unsigned int>(time(nullptr)));
 	nc::setFilePath("../Resources");
 
-	std::unique_ptr<nc::Actor> actor = std::make_unique<nc::Actor>(nc::Transform{ nc::Vector2{400, 300}, 0, 5 });
-	{
-		std::unique_ptr<nc::SpriteComponent> component = std::make_unique<nc::SpriteComponent>();
-		component->texture = engine->Get<nc::ResourceSystem>()->Get<nc::Texture>("sf2.png", engine->Get<nc::Renderer>());
-		actor->AddComponent(std::move(component));
-	}
-	{
-		std::unique_ptr<nc::PhysicsComponent> component = std::make_unique<nc::PhysicsComponent>();
-		component->ApplyForce(nc::Vector2::right * 200);
-		actor->AddComponent(std::move(component));
-	}
-	scene->AddActor(std::move(actor));
+	rapidjson::Document document;
+	bool success = nc::json::Load("scene.txt", document);
+	assert(success);
+	scene->Read(document);
+
+	//std::unique_ptr<nc::Actor> actor = std::make_unique <nc::Actor>(nc::Transform{ nc::Vector2{400, 300}, 0, 3 });
+	//{
+	//	auto component = nc::ObjectFactory::Instance().Create<nc::SpriteAnimationComponent>("SpriteAnimationComponent");
+
+	//	//nc::SpriteAnimationComponent* component = actor->AddComponent<nc::SpriteAnimationComponent>();
+	//	component->texture = engine->Get<nc::ResourceSystem>()->Get<nc::Texture>("Link_Sheet.png", engine->Get<nc::Renderer>());
+	//	component->fps = 30;
+	//	component->numFramesX = 12;
+	//	component->numFramesY = 8;
+	//	actor->AddComponent(std::move(component));
+	//}
+
+	//scene->AddActor(std::move(actor));
 }
 
 void Game::Shutdown()

@@ -16,6 +16,9 @@ namespace nc {
 			b = ((rgb >> 16) & 0xff) / 255.0f;	//0 - 255
 		}
 
+		float operator [] (size_t index) const { return (&r)[index]; }
+		float& operator [] (size_t index) { return (&r)[index]; }
+
 		Color operator + (const Color& color) { return {r + color.r, g + color.g, b + color.b}; }
 		Color operator - (const Color& color) { return {r - color.r, g - color.g, b - color.b}; }
 		Color operator * (float s) const { return { r * s, g * s, b * s }; }
@@ -31,6 +34,7 @@ namespace nc {
 		}
 
 		friend std::istream& operator >> (std::istream& stream, Color& c);
+		friend std::ostream& operator << (std::ostream& stream, Color& c);
 
 		static const Color white;
 		static const Color red;

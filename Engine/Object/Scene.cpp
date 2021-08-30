@@ -1,5 +1,5 @@
 #include "Scene.h"
-#include "Actor.h"
+#include "Engine.h"
 #include <algorithm>
 
 namespace nc {
@@ -11,25 +11,6 @@ namespace nc {
 
 		//update actor
 		std::for_each(actors.begin(), actors.end(), [dt](auto& actor) { actor->Update(dt); });
-
-		// Check collisions
-		for (size_t i = 0; i < actors.size(); i++) {
-
-			for (size_t j = i + 1; j < actors.size(); j++) {
-
-				if (actors[i]->destroy + actors[j]->destroy) continue;
-
-				nc::Vector2 dir = actors[i]->transform.position - actors[j]->transform.position;
-				float distance = dir.Length();
-
-				if (distance < actors[i]->GetRadius() || distance < actors[j]->GetRadius()) {
-					actors[i]->OnCollision(actors[j].get());
-					actors[j]->OnCollision(actors[i].get());
-				}
-			}
-
-		}
-
 
 		// destroy actor
 		auto iter = actors.begin();
@@ -62,5 +43,39 @@ namespace nc {
 	void Scene::RemoveAllActors()
 	{
 		actors.clear();
+	}
+
+	Actor* Scene::FindActor(std::string name)
+	{
+		for (auto& actor : actors) {
+			if (actor->name == name) return actor.get();
+		}
+
+		return nullptr;
+	}
+
+	bool Scene::Write(const rapidjson::Value& value) const
+	{
+		return false;
+	}
+
+	bool Scene::Read(const rapidjson::Value& value)
+	{
+		if (value.HasMember("actors") && value["actors"].IsArray()) {
+
+			for (auto& actorValue : value["actors"].GetArray()) {
+				std::string type;
+				JSON_READ(actorValue, type);
+
+				auto actor = ObjectFactory::Instance().Create<Actor>(type);
+				if (actor) {
+					actor->scene = this;
+					actor->Read(actorValue);
+					AddActor(std::move(actor));
+				}
+			}
+		}
+
+		return true;
 	}
 }

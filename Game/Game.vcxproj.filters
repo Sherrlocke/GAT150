@@ -12,6 +12,9 @@
     <Filter Include="Actors">
       <UniqueIdentifier>{02a90db1-b96e-44be-a630-226a9294ab4e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\GameComponent">
+      <UniqueIdentifier>{aa2ea0bd-cbf5-4e8a-8f13-acfbc190de92}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -20,10 +23,28 @@
     <ClCompile Include="Game.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="GameComponent\PlayerComponent.cpp">
+      <Filter>Source\GameComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="GameComponent\EnemyComponent.cpp">
+      <Filter>Source\GameComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="GameComponent\PickupComponent.cpp">
+      <Filter>Source\GameComponent</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
       <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="GameComponent\PlayerComponent.h">
+      <Filter>Source\GameComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="GameComponent\EnemyComponent.h">
+      <Filter>Source\GameComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="GameComponent\PickupComponent.h">
+      <Filter>Source\GameComponent</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
