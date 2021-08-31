@@ -1,28 +1,28 @@
 {
    "actors":[
       {
-			"type":"Actor",
-			"name":"Score",
-			"transform":{
-				"position":[
-					60,
-					20
-				]
-			},
-			"components":[
-				{
-					"type":"TextComponent",
-					"fontName":"Fonts/LHANDW.ttf",
-					"fontSize":16,
-					"color":[
-						1,
-						1,
-						1
-					],
-					"text":"Hello World!"
-				}
-			]
-	  },
+         "type":"Actor",
+         "name":"Score",
+         "transform":{
+            "position":[
+               60,
+               20
+            ]
+         },
+         "components":[
+            {
+               "type":"TextComponent",
+               "fontName":"Fonts/LHANDW.ttf",
+               "fontSize":16,
+               "color":[
+                  1,
+                  1,
+                  1
+               ],
+               "text":"Hello World!"
+            }
+         ]
+      },
       {
          "type":"Actor",
          "name":"Player",
@@ -50,25 +50,25 @@
                "numFramesY":11,
                "startFrame":90,
                "endFrame":95,
-               "sequences": [
-                    {
-                        "name":"idle",
-                        "sequence.fps":5,
-                        "sequence.startFrame":0,
-                        "sequence.endFrame":1
-                    },
-                    {
-                        "name":"walk_right",
-                        "sequence.fps":10,
-                        "sequence.startFrame":90,
-                        "sequence.endFrame":95
-                    },
-                    {
-                        "name":"walk_left",
-                        "sequence.fps":10,
-                        "sequence.startFrame":162,
-                        "sequence.endFrame":167
-                    }
+               "sequences":[
+                  {
+                     "name":"idle",
+                     "sequence.fps":5,
+                     "sequence.startFrame":0,
+                     "sequence.endFrame":1
+                  },
+                  {
+                     "name":"walk_right",
+                     "sequence.fps":10,
+                     "sequence.startFrame":90,
+                     "sequence.endFrame":95
+                  },
+                  {
+                     "name":"walk_left",
+                     "sequence.fps":10,
+                     "sequence.startFrame":162,
+                     "sequence.endFrame":167
+                  }
                ],
                "defaultSequence":"idle"
             },
@@ -83,32 +83,7 @@
                   64,
                   96
                ]
-            },
-            {
-	        "type":"AudioComponent",
-	        "soundName":"audio/dub_hub.wav",
-	        "playOnAwake":true
             }
-
-         ]
-      },
-      {
-        "type":"Actor",
-         "tag":"Pickup",
-         "transform":{
-            "position":[
-               700,
-               500
-            ],
-         },
-         "components":[
-            {
-               "type":"SpriteAnimationComponent",
-               "textureName":"coin.png",
-               "fps":10,
-               "numFramesX":8,
-               "numFramesY":1
-            },
          ]
       },
       {
@@ -172,6 +147,43 @@
                "data.size":[
                   800,
                   20
+               ]
+            }
+         ]
+      },
+      {
+         "type":"Actor",
+         "prototype":true,
+         "tag":"Pickup",
+         "name":"Coin",
+         "transform":{
+            "position":[
+               700,
+               500
+            ]
+         },
+         "components":[
+            {
+                "type":"PickupComponent"
+            },
+            {
+               "type":"SpriteAnimationComponent",
+               "textureName":"Coin.png",
+               "fps":10,
+               "numFramesX":8,
+               "numFramesY":1
+            },
+            {
+               "type":"RBPhysicsComponent",
+               "data.isDynamic":true,
+               "data.isSensor":true,
+               "data.density":1,
+               "data.lockAngle":true,
+               "data.restitution":0.1,
+               "data.gravityScale":0,
+               "data.size":[
+                  32,
+                  32
                ]
             }
          ]

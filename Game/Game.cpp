@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "GameComponent/PlayerComponent.h"
 #include "GameComponent/EnemyComponent.h"
+#include "GameComponent/PickupComponent.h"
 
 
 
@@ -13,6 +14,7 @@ void Game::Initialize()
 
 	REGISTER_CLASS(PlayerComponent);
 	REGISTER_CLASS(EnemyComponent);
+	REGISTER_CLASS(PickupComponent);
 
 	// create scene
 	scene = std::make_unique<nc::Scene>(); //New Scene
@@ -26,19 +28,11 @@ void Game::Initialize()
 	assert(success);
 	scene->Read(document);
 
-	//std::unique_ptr<nc::Actor> actor = std::make_unique <nc::Actor>(nc::Transform{ nc::Vector2{400, 300}, 0, 3 });
-	//{
-	//	auto component = nc::ObjectFactory::Instance().Create<nc::SpriteAnimationComponent>("SpriteAnimationComponent");
-
-	//	//nc::SpriteAnimationComponent* component = actor->AddComponent<nc::SpriteAnimationComponent>();
-	//	component->texture = engine->Get<nc::ResourceSystem>()->Get<nc::Texture>("Link_Sheet.png", engine->Get<nc::Renderer>());
-	//	component->fps = 30;
-	//	component->numFramesX = 12;
-	//	component->numFramesY = 8;
-	//	actor->AddComponent(std::move(component));
-	//}
-
-	//scene->AddActor(std::move(actor));
+	for (int i = 0; i < 10; i++) {
+		auto actor = nc::ObjectFactory::Instance().Create<nc::Actor>("Coin");
+		actor->transform.position = nc::Vector2{ nc::RandomRange(0, 800), nc::RandomRange(300, 500) };
+		scene->AddActor(std::move(actor));
+	}
 }
 
 void Game::Shutdown()
